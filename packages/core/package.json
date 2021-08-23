@@ -1,0 +1,31 @@
+{
+  "name": "@podiceps/core",
+  "version": "0.1.0",
+  "description": "podiceps",
+  "keywords": [
+    "request",
+    "middleware"
+  ],
+  "author": "loeify <loeify@gmail.com>",
+  "homepage": "https://github.com/fratercula/podiceps",
+  "license": "MIT",
+  "main": "lib/core.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fratercula/podiceps.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/fratercula/podiceps/issues"
+  },
+  "dependencies": {
+  }
+}
