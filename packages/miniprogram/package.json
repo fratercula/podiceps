@@ -21,7 +21,7 @@
     "url": "git+https://github.com/fratercula/podiceps.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "lint": "echo 0"
   },
   "bugs": {
     "url": "https://github.com/fratercula/podiceps/issues"

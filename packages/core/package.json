@@ -21,11 +21,18 @@
     "url": "git+https://github.com/fratercula/podiceps.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "lint": "tsc --noemit && eslint . --ext .ts,.tsx,.js"
   },
   "bugs": {
     "url": "https://github.com/fratercula/podiceps/issues"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.24.1",
+    "typescript": "^4.3.5"
   }
 }
