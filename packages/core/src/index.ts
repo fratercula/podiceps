@@ -1,7 +1,7 @@
 class Middleware {
-  constructor() {
-    this.a = 1
-  }
+  // constructor() {
+  //   this.a = 1;
+  // }
 }
 
 export default Middleware

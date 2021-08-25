@@ -4,6 +4,17 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+        "lerna exec -- yarn lint",
+        "git add"
+    ]
+  },
   "devDependencies": {
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2"
   }
 }
