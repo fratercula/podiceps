@@ -9,8 +9,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
-        "lerna exec -- yarn lint",
-        "git add"
+      "lerna exec -- yarn lint"
     ]
   },
   "devDependencies": {
