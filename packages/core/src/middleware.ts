@@ -6,6 +6,8 @@ import {
   CompleteMiddleware,
   MiddlewareConfig,
   MiddlewareKeys,
+  Config,
+  GlobalConfig,
 } from './types'
 
 class Middleware<R> {
@@ -42,6 +44,34 @@ class Middleware<R> {
 
   set adapter(middleware: AdapterMiddleware<R>) {
     this.adapterMiddleware = middleware
+  }
+
+  async exec({
+    type,
+    config,
+    data,
+    error,
+  }: {
+    type: MiddlewareKeys,
+    config: Config & GlobalConfig,
+    data?: R,
+    error?: Error,
+  }) {
+    const middlewares = this[type]
+    for (let i = 0; i < middlewares.length; i += 1) {
+      if (type === 'beforeMiddlewares') {
+        await (middlewares[i] as BeforeMiddleware)(config)
+      }
+      if (type === 'successMiddlewares') {
+        await (middlewares[i] as SuccessMiddleware<R>)(config, data as R)
+      }
+      if (type === 'errorMiddlewares') {
+        await (middlewares[i] as ErrorMiddleware)(config, error as Error)
+      }
+      if (type === 'completeMiddlewares') {
+        await (middlewares[i] as CompleteMiddleware<R>)(config, data, error)
+      }
+    }
   }
 }
 
