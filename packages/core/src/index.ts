@@ -1,23 +1,27 @@
 import Middleware from './middleware'
 import { Config, GlobalConfig } from './types'
 
-class Podiceps<R> extends Middleware<R> {
-  private configs: Record<string, Config>
+export { Configs, MiddlewareConfig as Middleware } from './types'
 
-  private globalConfig: GlobalConfig | undefined
+class Podiceps<C extends Record<string, Config>, R> extends Middleware<R> {
+  private configs: C
 
-  private contexts: Record<string, (config?: Config) => Promise<R>>
+  private globalConfig?: GlobalConfig
 
-  constructor(configs: Record<string, Config>, globalConfig?: GlobalConfig) {
+  private contexts: Record<keyof C, (config?: Config) => Promise<R>>
+
+  constructor(configs: C, globalConfig?: GlobalConfig) {
     super()
     this.configs = configs
     this.globalConfig = globalConfig || {}
-    this.contexts = {}
+    this.contexts = {} as Record<keyof C, (config?: Config) => Promise<R>>
     this.init()
   }
 
   private init() {
-    Object.keys(this.configs).forEach((key) => {
+    const keys: (keyof C)[] = Object.keys(this.configs)
+
+    keys.forEach((key) => {
       const config = {
         ...this.globalConfig,
         ...this.configs[key],

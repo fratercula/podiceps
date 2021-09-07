@@ -34,9 +34,10 @@ class Middleware<R> {
       Object.keys(middleware).forEach((type) => {
         const currentType = `${type}Middlewares` as MiddlewareKeys
         const currentMiddle = middleware[type as 'before']
+        const currentMiddlewares = this[currentType] as BeforeMiddleware[]
 
-        if (this[currentType]) {
-          this[currentType].push(currentMiddle as BeforeMiddleware)
+        if (currentMiddlewares) {
+          currentMiddlewares.push(currentMiddle as BeforeMiddleware)
         }
       })
     })
@@ -46,7 +47,7 @@ class Middleware<R> {
     this.adapterMiddleware = middleware
   }
 
-  async exec({
+  protected async exec({
     type,
     config,
     data,
