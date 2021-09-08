@@ -15,7 +15,7 @@ const middleware = (): Middleware<Res> => ({
   before(config) {
     config.timeout = 5000
   },
-  async success(config, data) {
+  async success(_config, data) {
     data.d.extra = await new Promise((r) => {
       setTimeout(r, 1000, 'success middleware')
     })
@@ -24,7 +24,7 @@ const middleware = (): Middleware<Res> => ({
 
 const configs: Apis = {
   users: {
-    path: '/api',
+    path: '/ap',
   },
   home: {
     path: '/a',
@@ -40,12 +40,21 @@ const podiceps = new Podiceps<Apis, Res>(
 
 podiceps.use([middleware()])
 
+podiceps.adapter = async (config): Promise<Res> => {
+  const { path } = config
+  return new Promise((resolve) => setTimeout(resolve, 1000, {
+    c: 0,
+    d: { path },
+    m: '',
+  }))
+}
+
 const apis = podiceps.create()
 
-console.log(apis)
-
 describe('podiceps', () => {
-  it('default', () => {
-    expect(1).toBe(1)
+  it('default', async () => {
+    const res = await apis.users({ path: '/api' })
+    expect(res.c).toBe(0)
+    expect(res.d.extra).toBe('success middleware')
   })
 })
