@@ -1,0 +1,42 @@
+{
+  "name": "@podiceps/auth",
+  "version": "0.1.0",
+  "description": "auth middleware",
+  "keywords": [
+    "auth",
+    "middleware"
+  ],
+  "author": "loeify <loeify@gmail.com>",
+  "homepage": "https://github.com/fratercula/podiceps#readme",
+  "license": "MIT",
+  "main": "lib/auth.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fratercula/podiceps.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/fratercula/podiceps/issues"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.24.2",
+    "jest": "^27.1.1",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.2"
+  }
+}

@@ -1,11 +1,11 @@
-# `miniprogram`
+# `auth`
 
 > TODO: description
 
 ## Usage
 
 ```
-const miniprogram = require('miniprogram');
+const auth = require('auth');
 
 // TODO: DEMONSTRATE API
 ```
