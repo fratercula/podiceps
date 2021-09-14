@@ -13,7 +13,7 @@
       "yarn lint"
     ],
     "*.{ts,tsx}": [
-      "lerna exec -- yarn tslint"
+      "lerna run tslint"
     ]
   },
   "devDependencies": {
