@@ -1,7 +1,3 @@
-module.exports = {
-  verbose: true,
-  preset: 'ts-jest',
-  transform: {
-    '^.+\\.ts?$': 'ts-jest',
-  },
-}
+const base = require('../../jest.config')
+
+module.exports = base
