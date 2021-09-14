@@ -21,7 +21,7 @@
     "url": "git+https://github.com/fratercula/podiceps.git"
   },
   "scripts": {
-    "tslint": "tsc --project ./tsconfig.json --noemit",
+    "tslint": "tsc --noemit",
     "build": "tsc",
     "test": "jest --detectOpenHandles"
   },

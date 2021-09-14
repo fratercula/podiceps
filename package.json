@@ -13,7 +13,7 @@
       "yarn lint"
     ],
     "*.{ts,tsx}": [
-      "lerna exec -- pwd && yarn tslint"
+      "cd $LERNA_PACKAGE_NAME && yarn tslint"
     ]
   },
   "devDependencies": {
