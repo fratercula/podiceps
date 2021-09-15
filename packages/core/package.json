@@ -9,7 +9,7 @@
   "author": "loeify <loeify@gmail.com>",
   "homepage": "https://github.com/fratercula/podiceps",
   "license": "MIT",
-  "main": "lib/core.js",
+  "main": "lib/index.js",
   "publishConfig": {
     "access": "public"
   },
@@ -21,7 +21,6 @@
     "url": "git+https://github.com/fratercula/podiceps.git"
   },
   "scripts": {
-    "tslint": "tsc --noemit",
     "build": "tsc",
     "test": "jest --detectOpenHandles"
   },

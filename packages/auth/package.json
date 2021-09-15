@@ -9,11 +9,7 @@
   "author": "loeify <loeify@gmail.com>",
   "homepage": "https://github.com/fratercula/podiceps#readme",
   "license": "MIT",
-  "main": "lib/auth.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
+  "main": "lib/index.js",
   "files": [
     "lib"
   ],
@@ -22,7 +18,6 @@
     "url": "git+https://github.com/fratercula/podiceps.git"
   },
   "scripts": {
-    "tslint": "pwd"
   },
   "bugs": {
     "url": "https://github.com/fratercula/podiceps/issues"
