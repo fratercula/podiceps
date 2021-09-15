@@ -22,7 +22,7 @@
     "url": "git+https://github.com/fratercula/podiceps.git"
   },
   "scripts": {
-    "tslint": "echo 0"
+    "tslint": "pwd"
   },
   "bugs": {
     "url": "https://github.com/fratercula/podiceps/issues"

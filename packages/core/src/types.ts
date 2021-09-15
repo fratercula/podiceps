@@ -33,5 +33,5 @@ export interface MiddlewareConfig<R = {}> {
   complete?: CompleteMiddleware<R>,
 }
 
-type GetMiddlewareKeys<T extends string> = `${T}Middlewaress`
+type GetMiddlewareKeys<T extends string> = `${T}Middlewares`
 export type MiddlewareKeys = GetMiddlewareKeys<Partial<keyof MiddlewareConfig>>
