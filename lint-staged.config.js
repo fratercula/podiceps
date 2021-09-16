@@ -1,4 +1,4 @@
 module.exports = {
-  '*.{ts,tsx}': () => 'tsc --noEmit',
+  '*.{ts,tsx}': () => 'lerna exec -- tsc -p tsconfig.json --noEmit',
   '*.{js,ts,tsx}': 'yarn lint',
 }
