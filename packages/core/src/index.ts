@@ -48,11 +48,12 @@ class Podiceps<C extends Record<string, Config>, R> extends Middleware<R> {
       await this.exec({ type: 'beforeMiddlewares', config })
 
       data = await Promise.race([
-        this.adapterMiddleware(config),
+        this.fetcherMiddleware(config),
         new Promise((r) => setTimeout(r, timeout, timeoutSymbol)),
       ])
 
       if (data as symbol === timeoutSymbol) {
+        data = undefined
         throw new Error(`timeout of ${timeout} ms exceeded`)
       }
 

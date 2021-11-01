@@ -1,6 +1,6 @@
 export type Config = {
   baseURL?: string,
-  path: string,
+  path?: string,
   timeout?: number,
   method?: 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH' | 'HEAD' | 'OPTIONS',
   params?: Record<string, string | number | boolean>,
@@ -14,7 +14,7 @@ export type GlobalConfig = Pick<Config, 'baseURL' | 'timeout' | 'headers'>
 
 export type BeforeMiddleware = (config: Config) => Promise<void> | void
 
-export type AdapterMiddleware<R> = (config: Config) => Promise<R>
+export type Fetcher<R> = (config: Config) => Promise<R>
 
 export type SuccessMiddleware<R> = (config: Config, data: R) => Promise<void> | void
 

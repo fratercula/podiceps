@@ -9,24 +9,41 @@ type Res = {
   m: string,
   d: Record<string, any>,
 }
-type Apis = Configs<'users' | 'home'>
+type Apis = Configs<'default' | 'error'>
 
 const middleware = (): Middleware<Res> => ({
   before(config) {
     config.timeout = 5000
   },
   async success(_config, data) {
-    data.d.extra = await new Promise((r) => {
-      setTimeout(r, 1000, 'success middleware')
+    data.d.success = await new Promise((r) => {
+      setTimeout(r, 1000, 'success')
     })
+  },
+  complete(_config, data) {
+    if (data) {
+      data.d.complete = 'complete'
+    }
+  },
+})
+
+const errorMiddleware = (): Middleware<Res> => ({
+  error(_config, error) {
+    error.message = 'error'
+  },
+  // @ts-ignore
+  notExistType(data) {
+    if (data) {
+      data.d.extra = 'complete'
+    }
   },
 })
 
 const configs: Apis = {
-  users: {
+  default: {
     path: '/ap',
   },
-  home: {
+  error: {
     path: '/a',
   },
 }
@@ -37,10 +54,13 @@ const podiceps = new Podiceps<Apis, Res>(
     baseURL: 'https://randomuser.me',
   },
 )
+const podiceps1 = new Podiceps<Apis, Res>(configs)
+const podiceps2 = new Podiceps<Configs<'fetcher'>, any>({ fetcher: {} })
 
 podiceps.use([middleware()])
+podiceps1.use([errorMiddleware(), middleware()])
 
-podiceps.adapter = async (config): Promise<Res> => {
+podiceps.fetcher = async (config): Promise<Res> => {
   const { path } = config
   return new Promise((resolve) => setTimeout(resolve, 1000, {
     c: 0,
@@ -48,13 +68,32 @@ podiceps.adapter = async (config): Promise<Res> => {
     m: '',
   }))
 }
+podiceps1.fetcher = (): Promise<Res> => new Promise((resolve) => setTimeout(resolve, 10000, {
+  c: 0,
+  d: {},
+  m: '',
+}))
 
 const apis = podiceps.create()
+const apis1 = podiceps1.create()
+const apis2 = podiceps2.create()
 
 describe('podiceps', () => {
   it('default', async () => {
-    const res = await apis.users({ path: '/api' })
+    const res = await apis.default({ path: '/api' })
     expect(res.c).toBe(0)
-    expect(res.d.extra).toBe('success middleware')
+    expect(res.d.success).toBe('success')
+    expect(res.d.complete).toBe('complete')
+  })
+
+  it('error', async () => {
+    await expect(apis1.error({
+      timeout: 1000,
+    })).rejects.toThrow('error')
+  })
+
+  it('fetcher', async () => {
+    const res = await apis2.fetcher()
+    expect(res).toBe(undefined)
   })
 })

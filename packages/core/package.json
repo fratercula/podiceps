@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --coverage"
   },
   "bugs": {
     "url": "https://github.com/fratercula/podiceps/issues"
