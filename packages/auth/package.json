@@ -17,11 +17,11 @@
     "type": "git",
     "url": "git+https://github.com/fratercula/podiceps.git"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "bugs": {
     "url": "https://github.com/fratercula/podiceps/issues"
   },
-  "devDependencies": {
+  "dependencies": {
+    "tslib": "^2.3.1"
   }
 }
