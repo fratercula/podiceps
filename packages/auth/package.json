@@ -17,11 +17,18 @@
     "type": "git",
     "url": "git+https://github.com/fratercula/podiceps.git"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --detectOpenHandles --coverage"
+  },
   "bugs": {
     "url": "https://github.com/fratercula/podiceps/issues"
   },
   "dependencies": {
+    "nycticorax": "^2.0.6",
     "tslib": "^2.3.1"
+  },
+  "devDependencies": {
+    "@podiceps/core": "^0.1.0"
   }
 }
