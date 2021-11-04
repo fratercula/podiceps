@@ -10,6 +10,7 @@
   "homepage": "https://github.com/fratercula/podiceps#readme",
   "license": "MIT",
   "main": "lib/index.js",
+  "module": "lib/esm/index.js",
   "files": [
     "lib"
   ],
@@ -21,7 +22,7 @@
     "url": "git+https://github.com/fratercula/podiceps.git"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --module commonjs --outDir lib && tsc --module es2015 --outDir lib/esm",
     "test": "jest --detectOpenHandles --coverage"
   },
   "bugs": {
