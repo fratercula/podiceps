@@ -1,7 +1,7 @@
 import Nycticorax from 'nycticorax/dist/core'
 import { Middleware } from '@podiceps/core'
 
-type Store = { login?: boolean }
+type Store = { login: boolean }
 
 const {
   createStore,
@@ -11,7 +11,7 @@ const {
 } = new Nycticorax<Store>()
 
 export default () => {
-  createStore({ login: undefined })
+  createStore({ login: false })
 
   return <{
     login: () => void,
@@ -19,20 +19,16 @@ export default () => {
     middleware: Middleware<any>,
   }>{
     login() {
-      dispatch({ login: true })
+      dispatch({ login: true }, true)
     },
     logout() {
-      dispatch({ login: false })
+      dispatch({ login: false }, true)
     },
     middleware: {
       before() {
         return new Promise<void>((resolve) => {
           if (getStore().login) {
             resolve()
-            return
-          }
-
-          if (getStore().login === false) {
             return
           }
 

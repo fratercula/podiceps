@@ -20,8 +20,8 @@ podiceps.fetcher = (config) => Promise.resolve(config.path)
 
 const apis = podiceps.create()
 
-let res0: string
-let res1: string
+let res0: any
+let res1: any
 
 describe('podiceps auth', () => {
   it('default', async () => {
@@ -44,6 +44,27 @@ describe('podiceps auth', () => {
     expect(res0).toBe('default')
     expect(res1).toBe('next')
 
+    res0 = undefined
+    res1 = undefined
+
     logout()
+
+    apis.default().then((res: string) => {
+      res0 = res
+    })
+
+    await new Promise((r) => setTimeout(r, 100))
+    expect(res0).toBe(undefined)
+
+    login()
+
+    await new Promise((r) => setTimeout(r, 100))
+    expect(res0).toBe('default')
+
+    apis.next().then((res: string) => {
+      res1 = res
+    })
+    await new Promise((r) => setTimeout(r, 100))
+    expect(res1).toBe('next')
   })
 })
