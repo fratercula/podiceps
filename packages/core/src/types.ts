@@ -6,11 +6,14 @@ export type Config = {
   params?: Record<string, string | number | boolean>,
   data?: any,
   headers?: any,
+  [key: string]: any,
 }
 
 export type Configs<K extends string> = Record<K, Config>
 
-export type GlobalConfig = Pick<Config, 'baseURL' | 'timeout' | 'headers'>
+export type GlobalConfig = Pick<Config, 'baseURL' | 'timeout' | 'headers'> & {
+  [key: string]: any,
+}
 
 export type BeforeMiddleware = (config: Config) => Promise<void> | void
 
