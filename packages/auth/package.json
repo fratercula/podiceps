@@ -24,7 +24,7 @@
   "scripts": {
     "build": "tsc --module commonjs --outDir lib && tsc --module es2015 --outDir lib/esm",
     "test": "jest --detectOpenHandles --coverage",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "yarn build"
   },
   "bugs": {
     "url": "https://github.com/fratercula/podiceps/issues"
