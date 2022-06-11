@@ -32,8 +32,9 @@ export default () => {
             return
           }
 
-          subscribe(() => {
+          const unSubscribe = subscribe(() => {
             if (getStore().login) {
+              unSubscribe()
               resolve()
             }
           })
