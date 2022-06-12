@@ -25,8 +25,13 @@ export default () => {
       dispatch({ login: false }, true)
     },
     middleware: {
-      before() {
+      before(config) {
         return new Promise<void>((resolve) => {
+          if (config.login === false) {
+            resolve()
+            return
+          }
+
           if (getStore().login) {
             resolve()
             return

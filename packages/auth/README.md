@@ -18,4 +18,14 @@ podiceps.use([middleware])
 login() // after login, start request
 
 logout() // logout
+
+// ignore login config
+import Podiceps from '@podiceps/core'
+
+const configs = {
+  next: {
+    path: '/next',
+    login: false, // not need login to request
+  },
+}
 ```

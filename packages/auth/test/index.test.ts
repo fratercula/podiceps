@@ -1,7 +1,7 @@
 import Podiceps, { Configs } from '@podiceps/core'
 import auth from '../src'
 
-type Apis = Configs<'default' | 'next'>
+type Apis = Configs<'default' | 'next' | 'login'>
 
 const configs: Apis = {
   default: {
@@ -9,6 +9,10 @@ const configs: Apis = {
   },
   next: {
     path: 'next',
+  },
+  login: {
+    login: false,
+    path: 'login',
   },
 }
 
@@ -22,6 +26,7 @@ const apis = podiceps.create()
 
 let res0: any
 let res1: any
+let res2: any
 
 describe('podiceps auth', () => {
   it('default', async () => {
@@ -31,11 +36,15 @@ describe('podiceps auth', () => {
     apis.next().then((res: string) => {
       res1 = res
     })
+    apis.login().then((res: string) => {
+      res2 = res
+    })
 
     await new Promise((r) => setTimeout(r, 100))
 
     expect(res0).toBe(undefined)
     expect(res1).toBe(undefined)
+    expect(res2).toBe('login')
 
     login()
 
