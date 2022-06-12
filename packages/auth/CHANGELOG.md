@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/fratercula/podiceps/compare/@podiceps/auth@0.1.1...@podiceps/auth@0.2.0) (2022-06-12)
+
+
+### Features
+
+* auth login config ([09244e5](https://github.com/fratercula/podiceps/commit/09244e5b2047635e6d2ad5fd78fd753f55d76f03))
+
+
+
+
+
 ## 0.1.1 (2022-06-11)
 
 
