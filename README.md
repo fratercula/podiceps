@@ -21,7 +21,7 @@ lerna run xxx --scope=@podiceps/xxx
 > commit first
 
 ```bash
-lerna version patch/minor/major --scope=@podiceps/xxx
+lerna version patch/minor/major
 ```
 
 ### Publish
