@@ -1,6 +1,6 @@
 import {
   BeforeMiddleware,
-  Fetcher,
+  Handler,
   SuccessMiddleware,
   ErrorMiddleware,
   CompleteMiddleware,
@@ -13,7 +13,7 @@ import {
 class Middleware<R> {
   protected beforeMiddlewares: BeforeMiddleware[]
 
-  protected fetcherMiddleware: Fetcher<R>
+  protected handlerMiddleware: Handler<R>
 
   protected successMiddlewares: SuccessMiddleware<R>[]
 
@@ -23,7 +23,7 @@ class Middleware<R> {
 
   constructor() {
     this.beforeMiddlewares = []
-    this.fetcherMiddleware = () => Promise.resolve(undefined as any)
+    this.handlerMiddleware = () => Promise.resolve(undefined as any)
     this.successMiddlewares = []
     this.errorMiddlewares = []
     this.completeMiddlewares = []
@@ -43,8 +43,13 @@ class Middleware<R> {
     })
   }
 
-  set fetcher(middleware: Fetcher<R>) {
-    this.fetcherMiddleware = middleware
+  /** Deprecated */
+  set fetcher(middleware: Handler<R>) {
+    this.handlerMiddleware = middleware
+  }
+
+  set handler(middleware: Handler<R>) {
+    this.handlerMiddleware = middleware
   }
 
   protected async exec({

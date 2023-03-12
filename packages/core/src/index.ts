@@ -48,7 +48,7 @@ class Podiceps<C extends Record<string, Config>, R> extends Middleware<R> {
       await this.exec({ type: 'beforeMiddlewares', config })
 
       data = await Promise.race([
-        this.fetcherMiddleware(config),
+        this.handlerMiddleware(config),
         new Promise((r) => setTimeout(r, timeout, timeoutSymbol)),
       ])
 
