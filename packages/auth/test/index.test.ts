@@ -20,7 +20,7 @@ const podiceps = new Podiceps<Apis, any>(configs)
 const { login, logout, middleware } = auth()
 
 podiceps.use([middleware])
-podiceps.fetcher = (config) => Promise.resolve(config.path)
+podiceps.adaptor = (config) => Promise.resolve(config.path)
 
 const apis = podiceps.create()
 

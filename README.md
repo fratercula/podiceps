@@ -29,3 +29,9 @@ lerna version patch/minor/major
 ```bash
 lerna publish from-package
 ```
+
+### Create Package
+
+```bash
+lerna create @podiceps/xxx
+```

@@ -17,7 +17,7 @@ export type GlobalConfig = Pick<Config, 'baseURL' | 'timeout' | 'headers'> & {
 
 export type BeforeMiddleware = (config: Config) => Promise<void> | void
 
-export type Handler<R> = (config: Config) => Promise<R>
+export type Adaptor<R> = (config: Config) => Promise<R>
 
 export type SuccessMiddleware<R> = (config: Config, data: R) => Promise<void> | void
 

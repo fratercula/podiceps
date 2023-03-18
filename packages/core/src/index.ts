@@ -1,7 +1,9 @@
 import Middleware from './middleware'
 import { Config, GlobalConfig } from './types'
 
-export { Configs, MiddlewareConfig as Middleware } from './types'
+export {
+  Configs, MiddlewareConfig as Middleware, Adaptor, Config,
+} from './types'
 
 class Podiceps<C extends Record<string, Config>, R> extends Middleware<R> {
   private configs: C
@@ -48,7 +50,7 @@ class Podiceps<C extends Record<string, Config>, R> extends Middleware<R> {
       await this.exec({ type: 'beforeMiddlewares', config })
 
       data = await Promise.race([
-        this.handlerMiddleware(config),
+        this.adaptorMiddleware(config),
         new Promise((r) => setTimeout(r, timeout, timeoutSymbol)),
       ])
 

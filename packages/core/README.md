@@ -51,7 +51,7 @@ const podiceps = new Podiceps<Apis, Response>(
   },
 )
 podiceps.use([middlewares])
-podiceps.fetcher = async (config): Promise<Response> => {
+podiceps.adaptor = async (config): Promise<Response> => {
   const { path } = config
   return new Promise((resolve) => setTimeout(resolve, 1000, {
     c: 0,
@@ -96,12 +96,12 @@ use middlewares
 type use = (middlewares: Middleware[]) => void
 ```
 
-### fetcher
+### adaptor
 
-set fetcher for request
+set adaptor for request
 
 ```ts
-set fetcher(fetcher: Fetcher<Response>)
+set adaptor(adaptor: Adaptor<Response>)
 ```
 
 ### create
@@ -115,6 +115,6 @@ type create = () => void
 ## Flow
 
 ```
-before -> fetcher -> success -> complete
+before -> adaptor -> success -> complete
                   -> error -> complete
 ```

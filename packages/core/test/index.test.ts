@@ -60,7 +60,7 @@ const podiceps2 = new Podiceps<Configs<'apiName'>, any>({ apiName: {} })
 podiceps.use([middleware()])
 podiceps1.use([errorMiddleware(), middleware()])
 
-podiceps.handler = async (config): Promise<Res> => {
+podiceps.adaptor = async (config): Promise<Res> => {
   const { path } = config
   return new Promise((resolve) => setTimeout(resolve, 1000, {
     c: 0,
@@ -68,7 +68,7 @@ podiceps.handler = async (config): Promise<Res> => {
     m: '',
   }))
 }
-podiceps1.fetcher = (): Promise<Res> => new Promise((resolve) => setTimeout(resolve, 10000, {
+podiceps1.adaptor = (): Promise<Res> => new Promise((resolve) => setTimeout(resolve, 10000, {
   c: 0,
   d: {},
   m: '',

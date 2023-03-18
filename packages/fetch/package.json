@@ -1,0 +1,37 @@
+{
+  "name": "@podiceps/fetch",
+  "version": "0.1.0",
+  "description": "adaptor fetch",
+  "keywords": [
+    "fetch"
+  ],
+  "author": "loeify <loeify@gmail.com>",
+  "homepage": "https://github.com/fratercula/podiceps#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/esm/index.js",
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fratercula/podiceps.git"
+  },
+  "scripts": {
+    "build": "tsc --module commonjs --outDir lib && tsc --module es2015 --outDir lib/esm",
+    "test": "jest --detectOpenHandles --coverage",
+    "prepublishOnly": "yarn build"
+  },
+  "dependencies": {
+    "tslib": "^2.3.1"
+  },
+  "bugs": {
+    "url": "https://github.com/fratercula/podiceps/issues"
+  },
+  "devDependencies": {
+    "@podiceps/core": "^0.1.2"
+  }
+}
