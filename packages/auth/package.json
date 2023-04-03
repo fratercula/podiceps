@@ -1,6 +1,6 @@
 {
   "name": "@podiceps/auth",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "auth middleware",
   "keywords": [
     "auth",
@@ -34,6 +34,6 @@
     "tslib": "^2.3.1"
   },
   "devDependencies": {
-    "@podiceps/core": "^0.1.2"
+    "@podiceps/core": "^1.0.0"
   }
 }
