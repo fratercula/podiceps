@@ -35,3 +35,17 @@ lerna publish from-package
 ```bash
 lerna create @podiceps/xxx
 ```
+
+### Add Module
+
+```bash
+lerna add @podiceps/core --scope=@podiceps/auth --dev
+```
+
+or
+
+fill package.json dependencies
+
+```bash
+lerna bootstrap
+```
