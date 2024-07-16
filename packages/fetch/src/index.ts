@@ -28,7 +28,12 @@ const fetchAdaptor = <T, >(config: Config): Promise<T> => {
       headers,
       ...rest,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json()
+        }
+        return Promise.reject(response)
+      })
       .then((res) => resolve(res as T))
       .catch((e) => reject(e))
   })
