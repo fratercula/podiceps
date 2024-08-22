@@ -17,7 +17,11 @@ export default () => {
     login: () => void,
     logout: () => void,
     middleware: Middleware<any>,
+    isLogin: () => boolean,
   }>{
+    isLogin() {
+      return getStore().login
+    },
     login() {
       dispatch({ login: true }, true)
     },

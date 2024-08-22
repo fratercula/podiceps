@@ -17,7 +17,9 @@ const configs: Apis = {
 }
 
 const podiceps = new Podiceps<Apis, any>(configs)
-const { login, logout, middleware } = auth()
+const {
+  login, middleware, isLogin, logout,
+} = auth()
 
 podiceps.use([middleware])
 podiceps.adaptor = (config) => Promise.resolve(config.path)
@@ -50,6 +52,7 @@ describe('podiceps auth', () => {
 
     await new Promise((r) => setTimeout(r, 100))
 
+    expect(isLogin()).toBe(true)
     expect(res0).toBe('default')
     expect(res1).toBe('next')
 
