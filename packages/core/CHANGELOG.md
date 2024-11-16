@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/fratercula/podiceps/compare/@podiceps/core@1.0.0...@podiceps/core@1.0.1) (2024-11-16)
+
+
+### Features
+
+* response types ([14d98c6](https://github.com/fratercula/podiceps/commit/14d98c62632078adfcc5bd4b060e5125e609e302))
+
+
+
+
+
 # [1.0.0](https://github.com/fratercula/podiceps/compare/@podiceps/core@0.1.2...@podiceps/core@1.0.0) (2023-04-03)
 
 
