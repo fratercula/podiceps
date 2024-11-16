@@ -5,18 +5,18 @@ export {
   Configs, MiddlewareConfig as Middleware, Adaptor, Config,
 } from './types'
 
-class Podiceps<C extends Record<string, Config>, R> extends Middleware<R> {
+class Podiceps<C extends Record<string, Config>, R extends object = any> extends Middleware<R> {
   private configs: C
 
   private globalConfig?: GlobalConfig
 
-  private contexts: Record<keyof C, (config?: Config) => Promise<R>>
+  private contexts: Record<keyof C, <RR = R>(config?: Config) => Promise<RR>>
 
   constructor(configs: C, globalConfig?: GlobalConfig) {
     super()
     this.configs = configs
     this.globalConfig = globalConfig || {}
-    this.contexts = {} as Record<keyof C, (config?: Config) => Promise<R>>
+    this.contexts = {} as Record<keyof C, <RR = R>(config?: Config) => Promise<RR>>
     this.init()
   }
 
@@ -39,7 +39,7 @@ class Podiceps<C extends Record<string, Config>, R> extends Middleware<R> {
     })
   }
 
-  private async controler(config: GlobalConfig & Config): Promise<R> {
+  private async controler<RR = R>(config: GlobalConfig & Config): Promise<RR> {
     const timeoutSymbol = Symbol('timeout')
     const timeout = config.timeout || 10000
 
@@ -80,7 +80,7 @@ class Podiceps<C extends Record<string, Config>, R> extends Middleware<R> {
       throw error
     }
 
-    return data as R
+    return data as RR
   }
 
   public create() {

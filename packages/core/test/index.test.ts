@@ -80,7 +80,7 @@ const apis2 = podiceps2.create()
 
 describe('podiceps', () => {
   it('default', async () => {
-    const res = await apis.default({ path: '/api' })
+    const res = await apis.default<Res>({ path: '/api' })
     expect(res.c).toBe(0)
     expect(res.d.success).toBe('success')
     expect(res.d.complete).toBe('complete')
